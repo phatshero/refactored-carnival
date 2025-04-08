@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>舒馨家纺闭店清仓转发助手</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            padding: 20px;
+            background: #ffe6e6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #e4393c;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .qrcode {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .content {
+            background: #fff9f9;
+            padding: 15px;
+            border-radius: 5px;
+            line-height: 1.6;
+        }
+        .copy-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background: #e4393c;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+        .tips {
+            color: #666;
+            font-size: 12px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>扫码转发 享额外优惠</h1>
+        
+        <!-- 二维码展示区域 -->
+        <div class="qrcode" id="qrcode"></div>
+
+        <!-- 转发文案内容 -->
+        <div class="content" id="copyContent">
+            <p>🛌 【18年老店闭店清仓！最后10天！】</p>
+            <p>🔻纯棉四件套仅159元！买2件再享优惠！</p>
+            <p>🔻瑕疵品清仓福利99元！</p>
+            <p>🔻转发集5赞到店再减10元！10赞减20元！</p>
+            <p>📍地址：府前街舒馨家纺（凤安家园旁）</p>
+            <p>⏰时间：早9点-晚9点（周末不休）</p>
+            <p>❗️4月20日彻底闭店，货品售完不补！</p>
+        </div>
+
+        <button class="copy-btn" onclick="copyText()">一键复制文案</button>
+        <p class="tips">点击上方按钮复制后，直接粘贴到微信朋友圈即可</p>
+    </div>
+
+    <!-- 二维码生成库 -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <script>
+        // 自动生成当前页面的二维码
+        QRCode.toCanvas(document.getElementById('qrcode'), 
+            window.location.href, 
+            { width: 150 }, 
+            function (error) {
+                if (error) console.error(error)
+            }
+        )
+
+        // 复制功能
+        function copyText() {
+            const content = document.getElementById('copyContent').innerText;
+            navigator.clipboard.writeText(content).then(() => {
+                alert('文案已复制！快去微信粘贴转发吧~');
+            }).catch(err => {
+                alert('复制失败，请手动选择文字复制');
+            });
+        }
+    </script>
+</body>
+</html>
